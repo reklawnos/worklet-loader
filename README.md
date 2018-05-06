@@ -92,7 +92,7 @@ webpack assets is used
 
 ## Examples
 
-### `Integrating with TypeScript`
+### Integrating with TypeScript
 
 You will need to define a custom module for the exports of your worklet files
 

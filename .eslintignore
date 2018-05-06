@@ -1,7 +1,7 @@
 test/fixtures
 test/__expected__
 
-src/workers/InlineWorker.js
+src/worklets/InlineWorklet.js
 
 /node_modules
 /dist

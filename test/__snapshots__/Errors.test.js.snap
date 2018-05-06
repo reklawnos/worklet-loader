@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Errors Loader Error 1`] = `
-"Worker Loader
+"Worklet Loader
 
 This loader is only usable with webpack
 "
 `;
 
 exports[`Errors Validation Error 1`] = `
-"Worker Loader Invalid Options
+"Worklet Loader Invalid Options
 
 options.name should be string
 "

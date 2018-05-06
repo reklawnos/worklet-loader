@@ -102,43 +102,12 @@ test('should inline worker with inline in options', () =>
   })
 );
 
-test('should add fallback chunks with inline option', () =>
-  webpack('inline-fallbacks', {
-    loader: {
-      test: /(w1|w2)\.js$/,
-      options: {
-        inline: true
-      }
-    }
-  }).then((stats) => {
-    const files = stats.toJson().children
-      .map(item => item.chunks)
-      .reduce((acc, item) => acc.concat(item), [])
-      .map(item => item.files)
-      .map(item => `__expected__/inline-fallbacks/${item}`);
-
-    assert.equal(files.length, 2);
-
-    const w1 = readFile(files[0]);
-    const w2 = readFile(files[1]);
-
-    if (w1.indexOf('// w1 via worker options') !== -1) {
-      assert.notEqual(w2.indexOf('// w2 via worker options'), -1);
-    }
-
-    if (w1.indexOf('// w2 via worker options') !== -1) {
-      assert.notEqual(w2.indexOf('// w1 via worker options'), -1);
-    }
-  })
-);
-
-test('should not add fallback chunks with inline and fallback === false', () =>
+test('should not add fallback chunks with inline', () =>
   webpack('no-fallbacks', {
     loader: {
       test: /(w1|w2)\.js$/,
       options: {
         inline: true,
-        fallback: false,
       }
     }
   }).then((stats) => {
@@ -169,46 +138,6 @@ test('should use the publicPath option as the base URL if specified', () =>
     const bundle = assets['bundle.js'];
     const worker = Object.keys(assets)[1];
 
-    expect(bundle.source()).toContain(`new Worker("/some/proxy/" + "${worker}")`);
+    expect(bundle.source()).toContain(`"/some/proxy/" + "${worker}"`);
   })
 );
-
-['web', 'webworker'].forEach((target) => {
-  test(`should have missing dependencies (${target})`, () =>
-    webpack('nodejs-core-modules', {
-      target,
-      loader: {
-        options: {
-          inline: true,
-          fallback: false,
-        },
-      },
-    }).then((stats) => {
-      expect(stats.compilation.missingDependencies.length).not.toEqual(0);
-    })
-  );
-});
-
-[
-  'node',
-  'async-node',
-  'node-webkit',
-  'atom',
-  'electron',
-  'electron-main',
-  'electron-renderer',
-].forEach((target) => {
-  test(`should not have missing dependencies (${target})`, () =>
-    webpack('nodejs-core-modules', {
-      target,
-      loader: {
-        options: {
-          inline: true,
-          fallback: false,
-        },
-      }
-    }).then((stats) => {
-      assert.equal(stats.compilation.missingDependencies.length, 0);
-    })
-  );
-});

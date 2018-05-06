@@ -31,6 +31,7 @@
     "webpack-defaults": "webpack-defaults"
   },
   "dependencies": {
+    "hoek": "^4.2.1",
     "loader-utils": "^1.0.0",
     "schema-utils": "^0.4.0"
   },

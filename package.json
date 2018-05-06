@@ -1,6 +1,6 @@
 {
   "name": "worklet-loader",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "Walker Henderson",
   "description": "worklet loader module for webpack",
   "repository": "https://github.com/reklawnos/worklet-loader.git",

@@ -1,15 +1,18 @@
 {
-  "name": "worklet-loader",
+  "name": "@gaoding/worklet-loader",
   "version": "1.0.0",
-  "author": "Walker Henderson",
+  "author": "xucheng",
   "description": "worklet loader module for webpack",
-  "repository": "https://github.com/reklawnos/worklet-loader.git",
-  "bugs": "https://github.com/reklawnos/worklet-loader/issues",
-  "homepage": "https://github.com/reklawnos/worklet-loader",
   "license": "MIT",
   "main": "dist/cjs.js",
   "files": [
     "dist"
+  ],
+  "maintainers": [
+    {
+      "name": "xuchen",
+      "email": "xuchen@gaoding.com"
+    }
   ],
   "scripts": {
     "start": "npm run build -- -w",

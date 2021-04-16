@@ -20,7 +20,7 @@ module.exports = function (content) {
       blob = blob.getBlob();
     } catch (e) {
       // The proposed API
-      blob = new Blob([content]);
+      blob = new Blob([content], { type: "application/javascript; charset=utf-8" });
     }
 
     return URL.createObjectURL(blob);

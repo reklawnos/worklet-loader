@@ -50,7 +50,7 @@
     "lint-staged": "^4.0.0",
     "nsp": "^2.6.0",
     "pre-commit": "^1.0.0",
-    "standard-version": "^4.0.0",
+    "standard-version": "^8.0.1",
     "webpack": "^3.0.0",
     "webpack-defaults": "^1.6.0"
   },

@@ -17,10 +17,10 @@ module.exports = function (content) {
 
       blob.append(content);
 
-      blob = blob.getBlob();
+      blob = blob.getBlob('application/javascript; charset=utf-8');
     } catch (e) {
       // The proposed API
-      blob = new Blob([content]);
+      blob = new Blob([content], { type: 'application/javascript; charset=utf-8' });
     }
 
     return URL.createObjectURL(blob);
